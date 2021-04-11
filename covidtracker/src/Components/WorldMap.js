@@ -73,10 +73,6 @@ function  WorldMap() {
                         else iconStr += 'k+';
                     }
 
-                    
-                    
-                    console.log(iconStr);
-
                     const newIcon = divIcon({
                         iconSize:[30, 30],
                         className:'icon-style',
