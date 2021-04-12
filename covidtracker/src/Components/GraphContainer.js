@@ -36,8 +36,9 @@ function GraphContainer() {
         const data = await response.json();
         var newData = [];
         data.map((day, index) => {
+            const date = day.Date;
             const newDay =  {
-                x: index,
+                x: date.substr(0,10),
                 y: day.Cases,
             }
             newData.push(newDay);
@@ -55,15 +56,34 @@ function GraphContainer() {
 
     useEffect(() => {
         getCountryData();
+        console.log(countryData);
     }, [country]);
 
     const config = [
         {									
-            color: "steelblue", 
+            color: "#8d2663", 
             points: countryData,
         }
     ];
 
+
+    const todayCases = countryData[countryData.length -1];
+    const stringCases = Number(todayCases.y).toLocaleString();
+
+    if(!countryData){
+        return(
+            <div>
+                <select name='option' style={inputBox} ref={selected} onChange={changeCountry}>
+                    {countries.map((country) => {
+                        return(
+                            <option value={country.country} key={country.country}>{country.country}</option>
+                        );
+                    })}
+                </select>
+                <h1>Graph Not Available</h1>
+            </div>
+        )
+    }
 
     return(
         <div>
@@ -75,11 +95,18 @@ function GraphContainer() {
                 })}
             </select>
             <h1>Current Graph: {country}</h1>
-            <LineChart 
-                width={600}
-                height={400}
-                data={config}
-            />
+            <div style={{backgroundColor:'#ababab',marginBottom:'50px', marginLeft:'400px', marginRight:'400px'}}>
+                <h1 style={{color:'black'}}>Actual cases: {stringCases}</h1>
+                <LineChart 
+                    width={1000}
+                    height={400}
+                    data={config}
+                    hideYAxis={true}
+                    hidePoints={false}
+                    isDate={true}
+                    hidePoints={true}
+                />
+            </div>
         </div>
     );
 }
