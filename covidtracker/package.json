@@ -9,9 +9,11 @@
     "leaflet": "^1.7.1",
     "mapbox-gl": "^2.2.0",
     "react": "^17.0.2",
+    "react-charts": "^2.0.0-beta.7",
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",
     "react-leaflet": "^3.1.0",
+    "react-linechart": "^1.1.12",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.0.1"
   },
