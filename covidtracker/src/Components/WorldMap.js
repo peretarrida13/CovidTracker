@@ -24,21 +24,6 @@ const countryList = {
     fontSize:'15px',
 }
 
-const iconStyle = {
-    backgroundColor:'#8d2663',
-
-    borderRadius:'50%',
-    borderColor:'#ababab',
-    borderWidth:'2px',
-    borderStyle:'solid',
-}
-
-const newIcon = divIcon({
-    iconSize:[30, 30],
-    className:'icon-style',
-    html:'<p class=icon-text>31</p>',
-})
-
 function  WorldMap() {
     const { fetchCountries, countries} = useCovidContext();
 
@@ -86,7 +71,7 @@ function  WorldMap() {
                             icon={newIcon}
                         >
                             <Popup>
-                                <h2 style={countryName}><img src={country.countryInfo.flag} style={flagStyle}/> {country.country}</h2>
+                                <h2 style={countryName}><img src={country.countryInfo.flag} style={flagStyle} alt={country.country}/> {country.country}</h2>
                                 <ul style={countryList}>
                                     <li><strong>Confirmed: </strong>{Number(country.cases).toLocaleString()}</li>
                                     <li><strong>Deaths: </strong>{Number(country.deaths).toLocaleString()}</li>

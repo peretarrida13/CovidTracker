@@ -13,14 +13,6 @@ const dataStyle =  {
   color:'#ababab',
 }
 
-const dataStyleMobile = {
-  display:'grid',
-  gridTemplateColumns: 'auto auto',
-  backgroundColor:'#2d2d2d',
-
-  color:'#ababab',
-}
-
 const buttonStyle = {
   padding:'5px',
   marginTop:'10px',

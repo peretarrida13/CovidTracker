@@ -1,12 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useCovidContext } from '../Contexts/contextCovid';
-import GraphDay from './GraphDay';
 import LineChart from 'react-linechart';
-
-const flagStyle = {
-    height:'15px',
-    width:'auto',
-}
 
 const inputBox = {
     height:'30px',
@@ -26,7 +20,7 @@ const casesStyle = {
 }
 
 function GraphContainer() {
-    const { fetchCountries, countries} = useCovidContext();
+    const { countries } = useCovidContext();
     const [country, setCountry] = useState('Afghanistan');
     const [countryData, setCountryData] = useState([]);
     const [error, setError] = useState(false);
@@ -56,6 +50,7 @@ function GraphContainer() {
                 y: day.Cases,
             }
             newData.push(newDay);
+            return newData;
         })
         setCountryData(newData);
     }
@@ -79,7 +74,7 @@ function GraphContainer() {
         } catch {
             setError(true);
         }
-    }, [, country]);
+    }, [country]);
 
     const config = [
         {									
@@ -136,7 +131,6 @@ function GraphContainer() {
                     hideYAxis={true}
                     hidePoints={false}
                     isDate={true}
-                    hidePoints={false}
                     onPointHover={setPoint}
                 />
             </div>
